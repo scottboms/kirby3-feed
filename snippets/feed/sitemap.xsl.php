@@ -10,6 +10,62 @@
       <head>
         <title>XML Sitemap</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style type="text/css">
+          body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 1em;
+            color: #343434;
+            background-color: #dadada;
+          }
+          table {
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          #sitemap tr.odd {
+            background-color: #eee;
+          }
+          #sitemap tbody tr:hover {
+            background-color: #ccc;
+          }
+          #sitemap tbody tr:hover td, #sitemap tbody tr:hover td a {
+            color: #000;
+          }
+          #content {
+            margin: 0 auto;
+            width: 100%;
+          }
+          .expl {
+            margin: 10px 3px;
+            line-height: 1.3em;
+          }
+          .expl a {
+            color: black;
+            font-weight: bold;
+          }
+          a {
+            color: #000;
+            text-decoration: none;
+          }
+          a:visited {
+            color: #777;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+          td {
+            font-size:1em;
+          }
+          th {
+            text-align:left;
+            padding-right:30px;
+            font-size:1em;
+          }
+          thead th {
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+          }
+        </style>
       </head>
       <body>
         <div id="content">
