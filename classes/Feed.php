@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bnomei;
 
+use Kirby\Cms\Field;
 use Kirby\Cms\Pages;
 use Kirby\Exception\DuplicateException;
 use Kirby\Exception\InvalidArgumentException;
@@ -63,7 +64,7 @@ final class Feed
         $key = $this->modifiedHashFromKeys();
 
         $string = null;
-        if (! $force) {
+        if (!$force) {
             $string = kirby()->cache('bnomei.feed')->get($key);
         }
         if ($string) {
@@ -77,7 +78,7 @@ final class Feed
             true
         ));
 
-        if (! option('debug')) {
+        if (!option('debug')) {
             kirby()->cache('bnomei.feed')->set(
                 $key,
                 $string,
@@ -153,11 +154,14 @@ final class Feed
         $options['items'] = $items;
         $options['link'] = url($options['link']);
 
-        if ($items && $items->count() && $options['datefield'] === 'modified') {
-            $options['modified'] = $items->first()->modified($options['dateformat'], 'date');
-        } elseif ($items && $items->count()) {
-            $datefieldName = $options['datefield'];
-            $options['modified'] = date($options['dateformat'], $items->first()->{$datefieldName}()->toTimestamp());
+        if ($items && $items->count()) {
+            $modified = $items->first()->modified($options['dateformat'], 'date');
+            $options['modified'] = $modified;
+
+            $datefield = $items->first()->{$options['datefield']}();
+            if ($datefield instanceof Field && $datefield->isNotEmpty()) {
+                $options['date'] = date($options['dateformat'], $datefield->toTimestamp());
+            }
         } else {
             $options['modified'] = site()->homePage()->modified();
         }
@@ -215,7 +219,7 @@ final class Feed
      */
     public static function isXml($content): bool
     {
-        if (! $content) {
+        if (!$content) {
             return false;
         }
         if (is_string($content) && strlen(trim($content)) === 0) {
