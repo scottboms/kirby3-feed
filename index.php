@@ -30,12 +30,13 @@ if (! function_exists('sitemap')) {
     }
 }
 
-Kirby::plugin('bnomei/feed', [
-    'name': 'bnomei/feed',
-    'info': [
-      'https://github.com/scottboms/kirby3-feed'
-    ],
-    'version' = '5.0.2',
+Kirby::plugin(
+  name: 'bnomei/feed',
+  info: [
+    'homepage' => 'https://github.com/scottboms/kirby3-feed'
+  ],
+  version: '5.0.2',
+  extends: [
     'options' => [
         'defaults' => function () {
             $site = site();
@@ -102,4 +103,5 @@ Kirby::plugin('bnomei/feed', [
             }
         },
     ],
-]);
+  ]
+);
