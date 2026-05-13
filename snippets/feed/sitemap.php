@@ -1,5 +1,8 @@
 <?php
-$xml = fn ($value): string => \Kirby\Toolkit\Xml::encode($value === null ? null : (string) $value);
+
+use Kirby\Toolkit\Xml;
+
+$xml = fn ($value): string => Xml::encode($value === null ? null : (string) $value);
 echo '<?xml version="1.0" encoding="utf-8"?>';
 ?><?php if ($xsl) {
     echo PHP_EOL.'<?xml-stylesheet type="text/xsl" href="sitemap.xsl" ?>';

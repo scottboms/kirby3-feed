@@ -1,7 +1,9 @@
 <?php
 
+use Bnomei\Feed;
+
 test('renders atom feed as valid xml', function () {
-    $response = \Bnomei\Feed::feed(page('blog')->children()->listed()->limit(1), [
+    $response = Feed::feed(page('blog')->children()->listed()->limit(1), [
         'title' => 'Latest articles',
         'link' => 'blog',
         'snippet' => 'feed/atom',

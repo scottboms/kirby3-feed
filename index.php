@@ -1,5 +1,6 @@
 <?php
 
+use Bnomei\Feed;
 use Kirby\Cms\Pages;
 use Kirby\Http\Response;
 
@@ -8,7 +9,7 @@ use Kirby\Http\Response;
 if (! function_exists('feed')) {
     function feed(Pages|Closure $pages, array $options = []): Response
     {
-        $response = \Bnomei\Feed::feed($pages, $options);
+        $response = Feed::feed($pages, $options);
         kirby()->response()->type($response->type());
 
         return $response;
@@ -18,7 +19,7 @@ if (! function_exists('feed')) {
 if (! function_exists('sitemap')) {
     function sitemap(Pages|Closure $pages, array $options = []): Response
     {
-        $response = \Bnomei\Feed::feed($pages, $options + [
+        $response = Feed::feed($pages, $options + [
             'feedurl' => site()->url().'/sitemap.xml',
             'snippet' => 'feed/sitemap',
             'dateformat' => 'c',
@@ -88,12 +89,12 @@ Kirby::plugin('bnomei/feed', [
     'hooks' => [
         'page.*:after' => function ($event, $page) {
             if ($event->action() !== 'render') {
-                \Bnomei\Feed::flush();
+                Feed::flush();
             }
         },
         'file.*:after' => function ($event, $file) {
             if ($event->action() !== 'render') {
-                \Bnomei\Feed::flush();
+                Feed::flush();
             }
         },
     ],

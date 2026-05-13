@@ -1,5 +1,7 @@
 <?php
 
+use Kirby\Data\Yaml;
+
 // NOTE: unless values are explicit cast yaml ties to resolve kirbys recursive tree
 $entries = [];
 foreach ($items as $item) {
@@ -22,4 +24,4 @@ $feed = [
     'items' => (array) $entries,
 ];
 
-echo Kirby\Data\Yaml::encode($feed);
+echo Yaml::encode($feed);
