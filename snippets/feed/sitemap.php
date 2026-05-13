@@ -33,9 +33,9 @@
     <?php foreach ($item->{$videosfield}() as $video) {
         if ($video) { ?>
     <video:video>
-      <?php if ($image->{$videothumbnailfield}()->isNotEmpty()) { ?><video:thumbnail><?= $video->{$videothumbnailfield}() ?></video:thumbnail><?php } ?>
-      <?php if ($image->{$videotitlefield}()->isNotEmpty()) { ?><video:title><?= \Kirby\Toolkit\Xml::encode($item->{$videotitlefield}()) ?></video:title><?php } ?>
-      <?php if ($image->{$videodescriptionfield}()->isNotEmpty()) { ?><video:description><?= \Kirby\Toolkit\Xml::encode($item->{$videodescriptionfield}()) ?></video:description><?php } ?>
+      <?php if ($video->{$videothumbnailfield}()->isNotEmpty()) { ?><video:thumbnail><?= $video->{$videothumbnailfield}() ?></video:thumbnail><?php } ?>
+      <?php if ($video->{$videotitlefield}()->isNotEmpty()) { ?><video:title><?= \Kirby\Toolkit\Xml::encode($video->{$videotitlefield}()) ?></video:title><?php } ?>
+      <?php if ($video->{$videodescriptionfield}()->isNotEmpty()) { ?><video:description><?= \Kirby\Toolkit\Xml::encode($video->{$videodescriptionfield}()) ?></video:description><?php } ?>
       <?php if (Str::contains($video->{$videourlfield}(), site()->url())) { ?><video:content_loc><?= $video->{$videourlfield}() ?></video:content_loc>
       <?php } else { ?><video:player_loc><?= $video->{$videourlfield}() ?></video:player_loc><?php } ?>
     </video:video>
