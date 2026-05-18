@@ -1,8 +1,9 @@
 {
   "name": "bnomei/kirby3-feed",
   "type": "kirby-plugin",
-  "version": "5.0.2",
+  "version": "5.2.0",
   "description": "Generate a Atom/JSON/RSS-Feed and XML-Sitemap from Pages-Collections",
+  "homepage": "https://github.com/bnomei/kirby3-feed",
   "license": "MIT",
   "authors": [
     {
@@ -46,6 +47,7 @@
     "larastan/larastan": "^v3.0.0",
     "laravel/pint": "^1.13",
     "pestphp/pest": "^v3.5.1",
+    "ramsey/uuid": "^4.9",
     "spatie/ray": "^1.39"
   },
   "scripts": {
